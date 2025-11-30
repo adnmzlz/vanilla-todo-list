@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vanilla To-Do List</title>
+  <link rel="stylesheet" href="./CSS/style.css">
+  <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
+</head>
+<body>
+  <div class="container">
+    <div id="add-div">
+      <h1>To-Do List</h1>
+      <!-- ADD TASK SECTION -->
+        <form>
+          <label for="add">New task: </label>
+          <input type="text" id="add-input">
+          <button type="button" onclick="addTask()">+</button>
+        </form>
+    </div>
+    <!-- LIST SECTION -->
+    <div id="list">
+      <!-- <h2>List</h2> -->
+      <table>
+        <!-- <thead>
+          <th>Task</th>
+          <th>Completed?</th>
+          <th>Delete</th> -->
+        </thead>
+        <tbody>
+          <tr class="row">
+            <!-- <td>Washing</td>
+            <td><input type="checkbox" onclick="markComplete()"></td>
+            <td><button class="delete">&times;</button></td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="restore-link">
+      <a href="./deleted.html">View and restore deleted tasks</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <p>&copy; adnmzlz 2025</p>
+    </div>
+    <div>
+      <p>Checklist favicon created by Freepik from <a href="https://www.flaticon.com/free-icons/checklist" title="checklist icons">Flaticon</a></p> 
+    </div>
+  </footer>
+  <script type="module" src="./JS/app.js"></script>
+</body>
+</html>
