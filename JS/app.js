@@ -1,6 +1,6 @@
 /**
  * File name: app.js
- * @version: 1.1.0
+ * @version: 1.2.0
  * @author: adnmzlz
  * Date created: 27/11/2025
  * Date last modified: 2/12/2025
@@ -132,6 +132,34 @@ function genTaskList() {
     localStorage.setItem("storedTaskArray", jsonTaskList);
 }
 /**
+ * @function to hide the completed tasks by re-generating the list for display.
+ */
+function hideCompleted() {
+    const tbody = document.querySelector("tbody");
+    tbody.replaceChildren();
+    for (let i = 0; i < taskList.length; i++) {
+        let task = taskList[i];
+        if (task.completed === false) {
+            // Passing the index as second parameter for order changes
+            taskRow([task], i);
+        }
+    }
+}
+/**
+ * @function to hide the UNcompleted tasks by re-generating the list for display.
+ */
+function hideUncompleted() {
+    const tbody = document.querySelector("tbody");
+    tbody.replaceChildren();
+    for (let i = 0; i < taskList.length; i++) {
+        let task = taskList[i];
+        if (task.completed === true) {
+            // Passing the index as second parameter for order changes
+            taskRow([task], i);
+        }
+    }
+}
+/**
  * ID generator @function
  */
 let nextId = 0;
@@ -161,5 +189,8 @@ function addTask() {
 window.addTask = addTask;
 window.taskList = taskList;
 window.taskRow = taskRow;
+window.hideCompleted = hideCompleted;
+window.hideUncompleted = hideUncompleted;
+window.genTaskList = genTaskList;
 export {};
 //# sourceMappingURL=app.js.map

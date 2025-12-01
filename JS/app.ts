@@ -1,6 +1,6 @@
 /**
  * File name: app.js
- * @version: 1.1.0
+ * @version: 1.2.0
  * @author: adnmzlz
  * Date created: 27/11/2025
  * Date last modified: 2/12/2025
@@ -139,7 +139,7 @@ function taskRow(tasks: Task[], index: number) {
  * @function to generate all entries on the taskList array
  */
 function genTaskList() {
-  const tbody = document.querySelector("tbody");
+  const tbody: any = document.querySelector("tbody");
   tbody.replaceChildren();
   for(let i=0; i < taskList.length; i++) {
     let task = taskList[i];
@@ -149,6 +149,36 @@ function genTaskList() {
   // Saving the taskList array to localStorage any time a change is made
   const jsonTaskList = JSON.stringify(taskList);
   localStorage.setItem("storedTaskArray", jsonTaskList);
+}
+
+/**
+ * @function to hide the completed tasks by re-generating the list for display.
+ */
+function hideCompleted() {
+  const tbody: any = document.querySelector("tbody");
+  tbody.replaceChildren();
+  for(let i=0; i < taskList.length; i++) {
+    let task = taskList[i];
+    if (task.completed === false) {
+    // Passing the index as second parameter for order changes
+    taskRow([task], i);
+    }
+  }
+}
+
+/**
+ * @function to hide the UNcompleted tasks by re-generating the list for display.
+ */
+function hideUncompleted() {
+  const tbody: any = document.querySelector("tbody");
+  tbody.replaceChildren();
+  for(let i=0; i < taskList.length; i++) {
+    let task = taskList[i];
+    if (task.completed === true) {
+    // Passing the index as second parameter for order changes
+    taskRow([task], i);
+    }
+  }
 }
 
 /**
@@ -184,3 +214,6 @@ function addTask() {
 (window as any).addTask = addTask;
 (window as any).taskList = taskList;
 (window as any).taskRow = taskRow;
+(window as any).hideCompleted = hideCompleted;
+(window as any).hideUncompleted = hideUncompleted;
+(window as any).genTaskList = genTaskList;

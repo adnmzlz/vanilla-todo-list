@@ -77,6 +77,11 @@ button {
   }
 }
 
+button.sort-button {
+  background-color: rgb(252, 218, 255);
+  border-radius: 5px;
+}
+
 #restore-link {
   padding-bottom: 15px;
   text-align: center;
