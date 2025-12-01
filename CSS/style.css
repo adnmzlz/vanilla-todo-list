@@ -92,3 +92,7 @@ footer {
   font-size: .8em;
   padding: 5px;
 }
+
+#restore-link {
+  padding: 20px;
+}
