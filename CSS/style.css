@@ -59,6 +59,14 @@ td {
   padding: 20px;
 }
 
+tr[draggable="true"] {
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing
+  }
+}
+
 button {
   padding: 2px 4px;
   border: none;

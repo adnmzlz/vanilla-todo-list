@@ -1,9 +1,9 @@
 /**
  * File name: app.js
- * @version: 1.0.0
+ * @version: 1.1.0
  * @author: adnmzlz
  * Date created: 27/11/2025
- * Date last modified: 30/11/2025
+ * Date last modified: 2/12/2025
  * @file: This is the JS app code for a vanilla To-Do list web application
  */
 
@@ -36,11 +36,57 @@ window.onload = function() {
 /**
  * @function to create a new listing for each task
  */
-function taskRow(tasks: Task[]) {
+function taskRow(tasks: Task[], index: number) {
   tasks.forEach(task => {
     // Create elements for the DOM
     const tbody = document.querySelector("tbody");
     const row = document.createElement("tr");
+      // Making the row draggable to we can change the order around
+      row.setAttribute("draggable", "true");
+      // Data attribute to store task's index in the array
+      row.setAttribute("data-task-index", index.toString());
+      /**
+       * @function for dragStart
+       */
+      row.addEventListener("dragstart", function(e) {
+        // Store index of dragged row
+        const draggedIndex: number = parseInt(this.getAttribute("data-task-index"));
+        // Adding effectAllowed so browser can access drag and drop functionality
+        e.dataTransfer.effectAllowed = "move";
+        // Store it in dataTransfer object so it can be accessed in the drop
+        e.dataTransfer.setData("text/plain", draggedIndex.toString());
+      });
+      /**
+       * @function for dragOver
+       */
+      row.addEventListener("dragover", function(e) {
+        // Required to allow drop
+        e.preventDefault();
+      })
+      /**
+       * @function for drop
+       */
+      row.addEventListener("drop", function(e) {
+        e.preventDefault();
+
+        // Get dragged row's index
+        const draggedIndex: number = parseInt(e.dataTransfer?.getData("text/plain"));
+        // Get target row's index
+        const targetIndex: number = parseInt(this.getAttribute("data-task-index"));
+
+        // Don't do anything if dropped in same spot
+        if (draggedIndex === targetIndex) return;
+
+        // Reorder array by removing dragged item and inserting into the new position
+        const draggedTask: Task = taskList[draggedIndex];
+        // Remove
+        taskList.splice(draggedIndex, 1);
+        // Insert
+        taskList.splice(targetIndex, 0, draggedTask);
+
+        // Regen list and save to localStorage
+        genTaskList();
+      })
     const name = document.createElement("td");
     const completedCell = document.createElement("td");
     const completedButton = document.createElement("input");
@@ -97,7 +143,8 @@ function genTaskList() {
   tbody.replaceChildren();
   for(let i=0; i < taskList.length; i++) {
     let task = taskList[i];
-    taskRow([task]);
+    // Passing the index as second parameter for order changes
+    taskRow([task], i);
   }
   // Saving the taskList array to localStorage any time a change is made
   const jsonTaskList = JSON.stringify(taskList);
