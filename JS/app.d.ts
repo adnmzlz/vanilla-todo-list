@@ -1,6 +1,6 @@
 /**
  * File name: app.js
- * @version: 1.2.0
+ * @version: 1.2.1
  * @author: adnmzlz
  * Date created: 27/11/2025
  * Date last modified: 2/12/2025

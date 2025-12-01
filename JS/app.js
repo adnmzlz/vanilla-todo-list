@@ -1,6 +1,6 @@
 /**
  * File name: app.js
- * @version: 1.2.0
+ * @version: 1.2.1
  * @author: adnmzlz
  * Date created: 27/11/2025
  * Date last modified: 2/12/2025
@@ -186,11 +186,20 @@ function addTask() {
     // Resets the input field
     input.value = '';
 }
+/**
+ * @function to add support for enter key to add a new task instead of just clickin the add button
+ */
+function checkEnter(event) {
+    if (event.key === "Enter") {
+        addTask();
+    }
+}
 window.addTask = addTask;
 window.taskList = taskList;
 window.taskRow = taskRow;
 window.hideCompleted = hideCompleted;
 window.hideUncompleted = hideUncompleted;
 window.genTaskList = genTaskList;
+window.checkEnter = checkEnter;
 export {};
 //# sourceMappingURL=app.js.map

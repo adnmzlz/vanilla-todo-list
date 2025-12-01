@@ -14,7 +14,7 @@
       <!-- ADD TASK SECTION -->
         <form>
           <label for="add">New task: </label>
-          <input type="text" id="add-input">
+          <input type="text" id="add-input" onkeypress="checkEnter(event)">
           <button type="button" onclick="addTask()">+</button>
         </form>
     </div>
