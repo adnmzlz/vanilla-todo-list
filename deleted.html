@@ -34,6 +34,27 @@
         </tbody>
       </table>
     </div>
+    <div id="restore-link">
+      <button type="button" onclick="purgeDeletes()">Purge all deleted tasks</button>
+    </div>
+    <dialog id="confirm1">
+      <p>Warning! This will <strong>PERMANENTLY</strong> remove all of your deleted tasks.  They <strong>CANNOT</strong> be restored once you complete this.</p>
+      <div class="delete-button">
+        <button type="button" onclick="openSecondConfirm()">Confirm action</button>
+      </div>
+      <div class="delete-button">
+        <button type="button" onclick="closeDialog()">Cancel</button>
+    </div>
+    </dialog>
+    <dialog id="confirm2" closed>
+      <p>Are you suuuuuuuuure?</p>
+      <div class="delete-button">
+        <button type="button" onclick="completePurge()">Yes, purge the deletes!</button>
+      </div>
+      <div class="delete-button" closed>
+        <button type="button" onclick="closeDialog()">Cancel</button>
+      </div>
+    </dialog>
   </div>
 
   <!-- FOOTER -->

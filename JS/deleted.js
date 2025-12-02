@@ -1,9 +1,9 @@
 /**
  * File name: deleted.js
- * @version: 1.0.0
+ * @version: 1.2.2
  * @author: adnmzlz
  * Date created: 30/11/2025
- * Date last modified: 30/11/2025
+ * Date last modified: 2/12/2025
  * @file: This is the script for the restore deleted tasks page.
  */
 // Defining the task list as the taskList array
@@ -19,6 +19,7 @@ window.onload = function () {
         taskList = storedJsonTaskList ? JSON.parse(storedJsonTaskList) : [];
     }
     genTaskList();
+    closeDialog();
 };
 /**
  * @function to create a new listing for each task
@@ -87,7 +88,54 @@ function genTaskList() {
     const jsonTaskList = JSON.stringify(taskList);
     localStorage.setItem("storedTaskArray", jsonTaskList);
 }
+/**
+ * @function to open delete purge dialog box
+ */
+function purgeDeletes() {
+    const dialogBoxOne = document.getElementById("confirm1");
+    dialogBoxOne.style.visibility = "visible";
+    dialogBoxOne.showModal();
+}
+/**
+ * @function to open confirmation dialog box
+ */
+function openSecondConfirm() {
+    const dialogBoxOne = document.getElementById("confirm1");
+    const dialogBoxTwo = document.getElementById("confirm2");
+    dialogBoxOne.close();
+    dialogBoxOne.style.visibility = "hidden";
+    dialogBoxTwo.style.visibility = "visible";
+    dialogBoxTwo.showModal;
+}
+/**
+ * @function to complete the purge of all deleted tasks
+ */
+function completePurge() {
+    for (let i = taskList.length - 1; i >= 0; i--) {
+        let task = taskList[i];
+        if (task.hidden === true) {
+            taskList.splice(i, 1);
+        }
+    }
+    genTaskList();
+    closeDialog();
+}
+/**
+ * @function to cancel/close both dialog boxes
+ */
+function closeDialog() {
+    const dialogBoxOne = document.getElementById("confirm1");
+    const dialogBoxTwo = document.getElementById("confirm2");
+    dialogBoxOne.close();
+    dialogBoxOne.style.visibility = "hidden";
+    dialogBoxTwo.close();
+    dialogBoxTwo.style.visibility = "hidden";
+}
 window.taskList = taskList;
 window.taskRow = taskRow;
+window.purgeDeletes = purgeDeletes;
+window.openSecondConfirm = openSecondConfirm;
+window.completePurge = completePurge;
+window.closeDialog = closeDialog;
 export {};
 //# sourceMappingURL=deleted.js.map

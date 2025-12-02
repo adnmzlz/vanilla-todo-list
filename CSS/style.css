@@ -154,9 +154,31 @@ button.sort-button {
 
 }
 
-
 footer {
   text-align: center;
   font-size: .8em;
   padding: 5px;
+}
+
+dialog {
+  visibility: hidden;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 300px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+dialog .delete-button {
+  border: 1px solid black;
+  box-sizing: content-box;
+
+  &:active {
+    background-color: rgb(202, 202, 202);
+  }
 }

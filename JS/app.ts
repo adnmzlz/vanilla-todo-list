@@ -1,6 +1,6 @@
 /**
  * File name: app.js
- * @version: 1.2.1
+ * @version: 1.2.2
  * @author: adnmzlz
  * Date created: 27/11/2025
  * Date last modified: 2/12/2025
@@ -227,3 +227,4 @@ function checkEnter(event: any) {
 (window as any).hideUncompleted = hideUncompleted;
 (window as any).genTaskList = genTaskList;
 (window as any).checkEnter = checkEnter;
+

@@ -1,9 +1,9 @@
 /**
  * File name: deleted.js
- * @version: 1.0.0
+ * @version: 1.2.2
  * @author: adnmzlz
  * Date created: 30/11/2025
- * Date last modified: 30/11/2025
+ * Date last modified: 2/12/2025
  * @file: This is the script for the restore deleted tasks page.
  */
 
@@ -31,6 +31,7 @@ window.onload = function() {
     taskList = storedJsonTaskList ? JSON.parse(storedJsonTaskList) : [];
     }
     genTaskList();
+    closeDialog();
 }
 
 /**
@@ -104,5 +105,56 @@ function genTaskList() {
   localStorage.setItem("storedTaskArray", jsonTaskList);
 }
 
+/**
+ * @function to open delete purge dialog box
+ */
+function purgeDeletes() {
+  const dialogBoxOne = document.getElementById("confirm1") as HTMLDialogElement;
+  dialogBoxOne.style.visibility = "visible";
+  dialogBoxOne.showModal();
+}
+
+/**
+ * @function to open confirmation dialog box
+ */
+function openSecondConfirm() {
+  const dialogBoxOne = document.getElementById("confirm1") as HTMLDialogElement;
+  const dialogBoxTwo = document.getElementById("confirm2") as HTMLDialogElement;
+  dialogBoxOne.close();
+  dialogBoxOne.style.visibility = "hidden";
+  dialogBoxTwo.style.visibility = "visible";
+  dialogBoxTwo.showModal;
+}
+
+/**
+ * @function to complete the purge of all deleted tasks
+ */
+function completePurge() {
+  for (let i = taskList.length -1; i >= 0; i--) {
+    let task = taskList[i];
+    if (task.hidden === true) {
+      taskList.splice(i, 1);
+    }
+  }
+  genTaskList();
+  closeDialog();
+}
+
+/**
+ * @function to cancel/close both dialog boxes
+ */
+function closeDialog() {
+  const dialogBoxOne = document.getElementById("confirm1") as HTMLDialogElement;
+  const dialogBoxTwo = document.getElementById("confirm2") as HTMLDialogElement;
+  dialogBoxOne.close();
+  dialogBoxOne.style.visibility = "hidden";
+  dialogBoxTwo.close();
+  dialogBoxTwo.style.visibility = "hidden";
+}
+
 (window as any).taskList = taskList;
 (window as any).taskRow = taskRow;
+(window as any).purgeDeletes = purgeDeletes;
+(window as any).openSecondConfirm = openSecondConfirm;
+(window as any).completePurge = completePurge;
+(window as any).closeDialog = closeDialog;

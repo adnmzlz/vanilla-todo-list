@@ -18,6 +18,10 @@ First time using TypeScript.
 *v1.2.1*
 - Support for enter key to submit new task
 
+*v1.2.2*
+- Styling changes
+- Added a way to purge deleted tasks
+
 <strong>Upcoming features:</strong>
 - Make it look nicer
 - Add touchstart/touchmove/touchend properties for mobile
