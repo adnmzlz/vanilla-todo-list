@@ -14,9 +14,15 @@ body {
   background-color:rgb(255, 254, 234);
 }
 
-/* .container {
-  padding: 20px;
-} */
+#filters {
+  display: flex;
+  width: 100%;
+  width: 350px;
+  margin: auto;
+  justify-content: space-between;
+  padding-top: 15px;
+
+}
 
 #add-div {
   background-color: rgb(214, 253, 253);

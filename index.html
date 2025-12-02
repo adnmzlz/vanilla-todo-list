@@ -14,16 +14,18 @@
       <!-- ADD TASK SECTION -->
         <form>
           <label for="add">New task: </label>
-          <input type="text" id="add-input" onkeypress="checkEnter(event)">
+          <input type="text" id="add-input" onkeypress="checkEnter(event)" autofocus>
           <button type="button" onclick="addTask()">+</button>
         </form>
     </div>
-    <!-- LIST SECTION -->
-    <div id="list">
-      <!-- <h2>List</h2> -->
+    <!-- FILTER BUTTONS -->
+    <div id="filters">
       <button type="button" class="sort-button" id="show-uncompleted-only" onclick="hideCompleted()">Hide completed</button>
       <button type="button" class="sort-button" id="show-completed-only" onclick="hideUncompleted()">Hide uncompleted</button>
       <button type="button" class="sort-button" id="show-all" onclick="genTaskList()">Show all</button>
+    </div>
+    <!-- LIST SECTION -->
+    <div id="list">
       <table>
         <!-- <thead>
           <th>Task</th>
@@ -40,7 +42,7 @@
       </table>
     </div>
     <div id="restore-link">
-      <a href="./deleted.html">View and restore deleted tasks</a>
+      <a href="./deleted.html">View/restore deleted tasks</a>
     </div>
   </div>
 
