@@ -22,6 +22,9 @@ First time using TypeScript.
 - Styling changes
 - Added a way to purge deleted tasks
 
+*v1.2.3*
+- Added check to prevent empty tasks being created
+
 <strong>Upcoming features:</strong>
 - Make it look nicer
 - Add touchstart/touchmove/touchend properties for mobile

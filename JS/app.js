@@ -1,6 +1,6 @@
 /**
  * File name: app.js
- * @version: 1.2.2
+ * @version: 1.2.3
  * @author: adnmzlz
  * Date created: 27/11/2025
  * Date last modified: 2/12/2025
@@ -172,17 +172,25 @@ function genId() {
 function addTask() {
     // Defining task input as a variable from the DOM
     let input = document.getElementById("add-input");
-    // Generate the task as an object
-    let newTask = {
-        id: genId(),
-        name: input.value,
-        completed: false,
-        hidden: false
-    };
-    // Adds the task object to the tasks array
-    taskList.push(newTask);
-    // Regenerates the task list
-    genTaskList();
+    let trimmedInput = input.value.trim();
+    console.log(trimmedInput);
+    // Checking that the input isn't empty
+    if (trimmedInput !== "") {
+        // Generate the task as an object
+        let newTask = {
+            id: genId(),
+            name: input.value,
+            completed: false,
+            hidden: false
+        };
+        // Adds the task object to the tasks array
+        taskList.push(newTask);
+        // Regenerates the task list
+        genTaskList();
+    }
+    else {
+        return;
+    }
     // Resets the input field
     input.value = '';
 }
