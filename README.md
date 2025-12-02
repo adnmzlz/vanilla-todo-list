@@ -20,6 +20,7 @@ First time using TypeScript.
 
 <strong>Upcoming features:</strong>
 - Make it look nicer
+- Add touchstart/touchmove/touchend properties for mobile
 
 <strong>I'm going to be re-making this again from scratch in React as well.  I have some more features I want to include, but they might see the light of day until the rebuild:</strong>
 - Logins/users/auth

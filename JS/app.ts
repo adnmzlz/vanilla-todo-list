@@ -214,7 +214,7 @@ function addTask() {
 /**
  * @function to add support for enter key to add a new task instead of just clickin the add button
  */
-function checkEnter(event) {
+function checkEnter(event: any) {
   if (event.key === "Enter") {
     addTask();
   }
