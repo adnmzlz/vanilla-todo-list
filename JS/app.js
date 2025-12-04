@@ -1,9 +1,9 @@
 /**
  * File name: app.js
- * @version: 1.2.3
+ * @version: 1.3.0
  * @author: adnmzlz
  * Date created: 27/11/2025
- * Date last modified: 2/12/2025
+ * Date last modified: 4/12/2025
  * @file: This is the JS app code for a vanilla To-Do list web application
  */
 // Defining the task list as the taskList array
@@ -27,13 +27,14 @@ function taskRow(tasks, index) {
     tasks.forEach(task => {
         // Create elements for the DOM
         const tbody = document.querySelector("tbody");
+        let mobileDragIndex;
         const row = document.createElement("tr");
         // Making the row draggable to we can change the order around
         row.setAttribute("draggable", "true");
         // Data attribute to store task's index in the array
         row.setAttribute("data-task-index", index.toString());
         /**
-         * @function for dragStart
+         * @function for dragstart
          */
         row.addEventListener("dragstart", function (e) {
             // Store index of dragged row
@@ -44,11 +45,37 @@ function taskRow(tasks, index) {
             e.dataTransfer.setData("text/plain", draggedIndex.toString());
         });
         /**
-         * @function for dragOver
+         * @function for touchstart (mobile)
+         */
+        row.addEventListener("touchstart", function (e) {
+            // Store index of dragged row
+            mobileDragIndex = parseInt(this.getAttribute("data-task-index"));
+            // Add visual feedback
+            this.style.opacity = "0.5";
+        });
+        /**
+         * @function for dragover
          */
         row.addEventListener("dragover", function (e) {
             // Required to allow drop
             e.preventDefault();
+        });
+        /**
+         * @function for touchmove (mobile)
+         */
+        row.addEventListener("touchmove", function (e) {
+            // Required to allow drop
+            e.preventDefault();
+            // Get touch position
+            const touch = e.touches[0];
+            // Find element under touch point
+            const elementUnderTouch = document.elementFromPoint(touch.clientX, touch.clientY);
+            // Find the row element (might be the row itself or a child)
+            const targetRow = elementUnderTouch?.closest('tr');
+            if (targetRow && mobileDragIndex !== null) {
+                // Add visual feedback for drop target
+                targetRow.style.backgroundColor = "#f0f0f0";
+            }
         });
         /**
          * @function for drop
@@ -70,6 +97,33 @@ function taskRow(tasks, index) {
             taskList.splice(targetIndex, 0, draggedTask);
             // Regen list and save to localStorage
             genTaskList();
+        });
+        /**
+         * @function for touchend (mobile)
+         */
+        row.addEventListener("touchend", function (e) {
+            e.preventDefault();
+            if (mobileDragIndex === null)
+                return;
+            // Get touch position
+            const touch = e.changedTouches[0];
+            // Find element under touch point
+            const elementUnderTouch = document.elementFromPoint(touch.clientX, touch.clientY);
+            const targetRow = elementUnderTouch?.closest('tr');
+            if (targetRow) {
+                const targetIndex = parseInt(targetRow.getAttribute("data-task-index"));
+                if (mobileDragIndex !== targetIndex) {
+                    // Reorder array
+                    const draggedTask = taskList[mobileDragIndex];
+                    taskList.splice(mobileDragIndex, 1);
+                    taskList.splice(targetIndex, 0, draggedTask);
+                    // Regen and save
+                    genTaskList();
+                }
+                // Reset
+                mobileDragIndex = null;
+                this.style.opacity = "1";
+            }
         });
         const name = document.createElement("td");
         const completedCell = document.createElement("td");

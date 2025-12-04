@@ -25,9 +25,11 @@ First time using TypeScript.
 *v1.2.3*
 - Added check to prevent empty tasks being created
 
+*v1.3.0*
+- Added mobile touch support for re-ordering the list.  It doesn't look great yet, but it works.
+
 <strong>Upcoming features:</strong>
-- Make it look nicer
-- Add touchstart/touchmove/touchend properties for mobile
+- Improve mobile drag-drop UI.
 
 <strong>I'm going to be re-making this again from scratch in React as well.  I have some more features I want to include, but they might see the light of day until the rebuild:</strong>
 - Logins/users/auth

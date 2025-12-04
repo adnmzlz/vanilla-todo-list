@@ -107,6 +107,7 @@ td {
 
 tr[draggable="true"] {
   cursor: grab;
+  touch-action: none;
 
   &:active {
     cursor: grabbing
