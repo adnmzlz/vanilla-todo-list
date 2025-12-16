@@ -33,8 +33,14 @@ First time using TypeScript.
 - Changed restore icon in deletes page
 - Added hamburger icon on main page
 
+*v1.3.3*
+- Updated footer
+
 <strong>Upcoming features:</strong>
 - Make hamburger icon only show up when more than one active task on the main list and improve positioning.
+- Fix checkbox behaviour/inconsistency on mobile
+- Fix desktop drag/drop UI issues on Chrome
+- Package/build as a standalone app
 
 <hr>
 
