@@ -28,8 +28,13 @@ First time using TypeScript.
 *v1.3.0*
 - Added mobile touch support for re-ordering the list.  It doesn't look great yet, but it works.
 
+*v1.3.2*
+- Improved drag/drop UI across both desktop and mobile
+- Changed restore icon in deletes page
+- Added hamburger icon on main page
+
 <strong>Upcoming features:</strong>
-- Improve mobile drag-drop UI.
+- Make hamburger icon only show up when more than one active task on the main list and improve positioning.
 
 <hr>
 
