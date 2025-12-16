@@ -105,6 +105,7 @@ td {
   word-break: break-all;
 }
 
+/* The dragged row */
 tr[draggable="true"] {
   cursor: grab;
   touch-action: none;

@@ -59,6 +59,27 @@ function taskRow(tasks, index) {
         row.addEventListener("dragover", function (e) {
             // Required to allow drop
             e.preventDefault();
+            // Get dragged and current indicies
+            const draggedData = e.dataTransfer?.getData("text/plain");
+            if (!draggedData)
+                return;
+            const draggedIndex = parseInt(draggedData);
+            const targetIndex = parseInt(this.getAttribute("data-task-index"));
+            // Clear previous highlights
+            document.querySelectorAll("tr").forEach(r => {
+                r.style.boxShadow = "";
+            });
+            // Thicken the bottom border on the target row
+            this.style.boxShadow = "0 -3px 0 0 black inset";
+        });
+        /**
+         * @function to clean up when actually leaving the row and not moving inside it
+         */
+        row.addEventListener("dragleave", function (e) {
+            const related = e.relatedTarget;
+            if (!related || !this.contains(related)) {
+                this.style.boxShadow = "";
+            }
         });
         /**
          * @function for touchmove (mobile)
@@ -73,8 +94,11 @@ function taskRow(tasks, index) {
             // Find the row element (might be the row itself or a child)
             const targetRow = elementUnderTouch?.closest('tr');
             if (targetRow && mobileDragIndex !== null) {
+                document.querySelectorAll("tr").forEach(r => {
+                    r.style.boxShadow = "";
+                });
                 // Add visual feedback for drop target
-                targetRow.style.backgroundColor = "#f0f0f0";
+                targetRow.style.boxShadow = "0 -3px 0 0 black inset";
             }
         });
         /**
@@ -82,6 +106,7 @@ function taskRow(tasks, index) {
          */
         row.addEventListener("drop", function (e) {
             e.preventDefault();
+            this.style.boxShadow = "";
             // Get dragged row's index
             const draggedIndex = parseInt(e.dataTransfer?.getData("text/plain"));
             // Get target row's index
@@ -103,6 +128,7 @@ function taskRow(tasks, index) {
          */
         row.addEventListener("touchend", function (e) {
             e.preventDefault();
+            this.style.boxShadow = "";
             if (mobileDragIndex === null)
                 return;
             // Get touch position
