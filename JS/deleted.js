@@ -43,7 +43,7 @@ function taskRow(tasks) {
         });
         const restoreCell = document.createElement("td");
         const restoreButton = document.createElement("button");
-        restoreButton.textContent = "✔";
+        restoreButton.textContent = "⟳";
         restoreButton.addEventListener("click", function () {
             task.hidden = false;
             // Call genTaskList() when restore clicked to reload and remove the restored items and save updates to localStorage.

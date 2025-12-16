@@ -180,7 +180,7 @@ function taskRow(tasks, index) {
             else {
                 completedButton.checked = false;
             }
-            name.textContent = `${task.name}`;
+            name.textContent = "☰ " + `${task.name}`;
             // Add 'row' class to the row
             row.classList.add("row");
             // Add 'delete' class to deleteCellButton
