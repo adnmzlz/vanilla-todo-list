@@ -36,18 +36,22 @@ First time using TypeScript.
 *v1.3.3*
 - Updated footer
 
-<strong>Upcoming features:</strong>
-- Make hamburger icon only show up when more than one active task on the main list and improve positioning.
-- Fix checkbox behaviour/inconsistency on mobile
-- Fix desktop drag/drop UI issues on Chrome
-- Package/build as a standalone app
-
 <hr>
 
-<strong>I'm going to be re-making this again from scratch in React as well.  I have some more features I want to include, but they might see the light of day until the rebuild:</strong>
+I'll be leaving this one for the moment so I can move onto other stuff, but here are a list of known issues and features I'd like to address at some point in the future.
+
+<strong>Known issues:</strong>
+- Checkbox and delete buttons don't always work on first tap in mobile mode, due to the drag/drop functionality being applied to the whole row.
+- Bottom border styling change on target row doesn't apply to Chrome in desktop mode.  (Ie it's hard to tell where the task you're moving will go to.)
+
+<strong>Upcoming features:</strong>
+- Make hamburger icon only show up when more than one active task on the main list and improve positioning.
+- Package/build as a standalone app
+
+<strong>Other features I will probably not include for this particular iteration:</strong>
 - Logins/users/auth
 - Saving tasks to a database
 
-<strong>Offshoots I want to try based on this idea:</strong>
+<strong>Offshoots I want to try at some point based on this project:</strong>
 - Save to a database, but no individual users.  Everyone has to share the same list (Asana gone wild).
 - Ways to view/share tasks with others.
