@@ -65,14 +65,10 @@ h1 {
 
 table {
   text-align: center;
-  margin: auto;
-  border: none;
+  margin: 5px auto;
+  border: solid 1px grey;
   border-spacing: 0;
   width: 90%;
-}
-
-table td:nth-child(1) {
-  width: 95%;
 }
 
 @media (max-width: 481px) {
@@ -94,14 +90,12 @@ table td:nth-child(1) {
   }
 }
 th, td {
-  border: none;
+  border: solid 1px grey;;
   padding: 5px;
 }
 
 td {
-  text-align: left;
-  border-bottom: solid 1px grey;
-  padding: 20px;
+  text-align: center;
   word-break: break-all;
 }
 
